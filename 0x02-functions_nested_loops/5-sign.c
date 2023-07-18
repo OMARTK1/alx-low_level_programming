@@ -21,14 +21,14 @@ int print_sign(int n)
 		printf("%c%d\n", plus, n);
 		return (1);
 	}
-	else if (n == 0)
-	{
-		printf("%d\n", zero);
+		else if (n == 0)
+		{
+			printf("%d\n", zero);
 		return (0);
-	}
-	else
-	{
-		printf("%c%d\n", minus, n);
+		}
+		else
+		{
+			printf("%c%d\n", minus, n);
 		return (-1);
-	}
+		}
 }

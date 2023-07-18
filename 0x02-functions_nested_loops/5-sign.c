@@ -12,10 +12,7 @@
 
 int print_sign(int n)
 {
-	char plus = '+';
-	char minus = '-';
-	int zero = 0;
-
+	
 	if (n > 0)
 	{
 		_putchar('+');

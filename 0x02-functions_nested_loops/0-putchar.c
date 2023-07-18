@@ -12,13 +12,11 @@
 
 int main(void)
 {
-	char str[] = "_putchar\n";
-	int i = 0;
+	char str[] = "_putchar";
+	int ch;
 
-	while (str[i] != '\0')
-	{
-		_putchar(str[i]);
-		i++;
-	}
+	for (ch = 0; ch < 8; ch++)
+		_putchar(str[ch]);
+	_putchar('\n');
 	return (0);
 }

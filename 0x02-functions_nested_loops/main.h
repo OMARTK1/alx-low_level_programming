@@ -1,8 +1,8 @@
-#ifndef MAIN.H
-#define MAIN.H
+#ifndef MAIN_H
+#define MAIN_H
 
 #include <stdio.h>
 
 int _putchr(char c);
 
-#endif	
+#endif	/* MAIN_H */

@@ -18,17 +18,17 @@ int print_sign(int n)
 
 	if (n > 0)
 	{
-		printf("%c", plus);
+		printf("%c%d\n", plus, n);
 		return (1);
 	}
 	else if (n == 0)
 	{
-		printf("%i", zero);
+		printf("%d\n", zero);
 		return (0);
 	}
 	else
 	{
-		printf("%c", minus);
+		printf("%c%d\n", minus, n);
 		return (-1);
 	}
 }

@@ -28,7 +28,7 @@ void print_times_table(int n)
 				printf(", ");
 
 				if (result < 10)
-					printf(" ");
+					printf("  ");
 			}
 		}
 		printf("\n");

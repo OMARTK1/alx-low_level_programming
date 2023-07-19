@@ -21,15 +21,16 @@ void print_times_table(int n)
 
 			int result = i * j;
 
-			printf("%d", result);
 
 			if (j != n)
-			{
+
 				printf(", ");
 
-				if (result < 10)
-					printf("  ");
-			}
+			if (result < 10)
+				printf("  %d", result);
+
+			else if (result < 100)
+				printf(" %d", result);
 		}
 		printf("\n");
 	}

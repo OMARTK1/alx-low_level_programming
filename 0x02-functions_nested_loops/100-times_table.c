@@ -8,26 +8,32 @@
 
 void print_times_table(int n)
 {
-	int i, j;
+	int prod, mult, num;
 
-	if (n < 0 || n > 15)
-		return;
+	if (n <= 15 && n >= 0)
 
-	for (i = 0; i <= n; i++)
-	{
-
-		for (j = 0; j <= n; j++)
+		for (num = 0; num <= n; num++)
 		{
+			_putchar(48);
+			for (mult = 0; mult <= n; mult++)
+			{
+				_putchar(',');
+				_putchar(' ');
 
-			int result = i * j;
+				prod = num * mult;
 
-
-			if (j != n)
-
-				printf(", ");
-
-			printf("%3d", result);
-		}
+				if (prod <= 9)
+					_putchar(' ');
+				if (prod <= 99)
+					_putchar(' ');
+				if (prod >= 100)
+				{
+					_putchar((prod / 100) + 48);
+					_putchar((prod / 10) % 10 + 48);
+				} else if (prod <= 99 && prod >= 10)
+					_putchar((prod / 10) + 48);
+				_putchar((prod % 10) + 48);
+			}
 		printf("\n");
-	}
+		}
 }

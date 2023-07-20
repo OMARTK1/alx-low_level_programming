@@ -6,9 +6,10 @@
  * @num: The number to check.
  * Return: 1 if prime, 0 otherwise.
  */
-
 int is_prime(unsigned long num)
 {
+	unsigned long i;
+
 	if (num <= 1)
 		return (0);
 
@@ -18,7 +19,7 @@ int is_prime(unsigned long num)
 	if (num % 2 == 0 || num % 3 == 0)
 		return (0);
 
-	for (unsigned long i = 5; i * i <= num; i += 6)
+	for (i = 5; i * i <= num; i += 6)
 	{
 		if (num % i == 0 || num % (i + 2) == 0)
 			return (0);
@@ -32,10 +33,10 @@ int is_prime(unsigned long num)
  * @num: The number to factorize.
  * Return: The largest prime factor.
  */
-
 unsigned long largest_prime_factor(unsigned long num)
 {
 	unsigned long largest_prime = 0;
+	unsigned long i;
 
 	while (num % 2 == 0)
 	{
@@ -43,7 +44,7 @@ unsigned long largest_prime_factor(unsigned long num)
 		num /= 2;
 	}
 
-	for (unsigned long i = 3; i <= sqrt(num); i += 2)
+	for (i = 3; i <= sqrt(num); i += 2)
 	{
 		while (num % i == 0)
 		{
@@ -58,6 +59,10 @@ unsigned long largest_prime_factor(unsigned long num)
 	return (largest_prime);
 }
 
+/**
+ * main - Entry point of the program.
+ * Return: Always 0 (Success).
+ */
 int main(void)
 {
 	unsigned long number_to_factorize = 612852475143;

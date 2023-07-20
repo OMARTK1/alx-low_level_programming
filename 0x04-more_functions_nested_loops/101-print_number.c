@@ -1,26 +1,26 @@
 #include "main.h"
 
 /**
- * main - Entry point
- *
- * Return: Always 0
- */
-int main(void)
+ * print_number - prints an integer
+ * @n: integer to be printed
+*/
+
+void print_number(int n)
 {
-	print_number(98);
-	_putchar('\n');
+	unsigned int nl;
 
-	print_number(402);
-	_putchar('\n');
+	if (n < 0)
+	{
+		nl = -n;
+	} else
+	{
+		nl = n;
+	}
 
-	print_number(1024);
-	_putchar('\n');
+	if (nl / 10)
+	{
+		print_number(nl / 10);
+	}
 
-	print_number(0);
-	_putchar('\n');
-
-	print_number(-98);
-	_putchar('\n');
-
-	return (0);
+	_putchar((nl % 10) + '0');
 }

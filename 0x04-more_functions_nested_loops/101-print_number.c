@@ -1,44 +1,26 @@
 #include "main.h"
 
 /**
- * print_number - Prints an integer using _putchar
- * @n: The integer to be printed
+ * main - Entry point
+ *
+ * Return: Always 0
  */
-void print_number(int n)
+int main(void)
 {
-	int divisor = 1;
-	int num_digits = 0;
-	int temp;
+	print_number(98);
+	_putchar('\n');
 
-	if (n < 0)
-	{
-		_putchar('-');
-		n = -n;
-	}
+	print_number(402);
+	_putchar('\n');
 
-	temp = n;
+	print_number(1024);
+	_putchar('\n');
 
-	/* Count the number of digits in the integer */
-	while (temp > 0)
-	{
-		temp /= 10;
-		divisor *= 10;
-		num_digits++;
-	}
+	print_number(0);
+	_putchar('\n');
 
-	/* Special case for printing 0 */
-	if (n == 0)
-	{
-		_putchar('0');
-		return;
-	}
+	print_number(-98);
+	_putchar('\n');
 
-	/* Print each digit one by one */
-	while (num_digits > 0)
-	{
-		divisor /= 10;
-		_putchar((n / divisor) + '0');
-		n %= divisor;
-		num_digits--;
-	}
+	return (0);
 }

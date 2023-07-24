@@ -8,15 +8,19 @@
 
 void rev_string(char *s)
 {
-	if (s == null)
+	if (s == NULL)
 		return;
 
-	int len = 0
+	int len = 0;
 	char *start, *end, temp;
 
 	while (*s[len] != '\0')
-	len++
+	{
+		len++;
+		s++;
+	}
 
+	s  -= len;
 	start = s;
 	end = s + len - 1;
 

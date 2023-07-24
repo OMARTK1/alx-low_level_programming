@@ -3,11 +3,14 @@
 /**
  * rev_string - Reverses a string.
  *
- * @s: String to be reversed.
+ * @s: Pointer to the string to be reversed.
  */
 
 void rev_string(char *s)
 {
+	if (s == null)
+		return;
+
 	int len = 0
 	char *start, *end, temp;
 
@@ -22,5 +25,8 @@ void rev_string(char *s)
 		temp = *start;
 		*start = *end;
 		*end = temp;
+
+		start++;
+		end--;
 	}
 }

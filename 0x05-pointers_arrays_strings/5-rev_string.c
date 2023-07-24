@@ -12,17 +12,17 @@ void rev_string(char *s)
 		return;
 
 	int len = 0;
-	char *start, *end, temp;
+	char *start = s
+	char *end = s;
+	char temp;
 
-	while (*s[len] != '\0')
+	while (*end != '\0')
 	{
+		end++;
 		len++;
-		s++;
 	}
 
-	s  -= len;
-	start = s;
-	end = s + len - 1;
+	end--;
 
 	while (start < end)
 	{

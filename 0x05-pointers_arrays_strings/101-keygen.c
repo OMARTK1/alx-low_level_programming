@@ -7,6 +7,7 @@
 
 int main(void)
 {
+	FILE *fp;
 	char password[PASSWORD_LENGTH + 1]; /* +1 for the null terminator */
 	const char charset[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 	int i;
@@ -23,33 +24,16 @@ int main(void)
 	
 	printf("%s\n", password);
 
-	/* Run the 101-crackme program with the generated password as input */
-	FILE *fp;
-	char command[50];
-	char output[50];
-
-	sprintf(command, "./101-crackme \"%s\"", password);
-	fp = popen(command, "r");
-
+	/* Save the generated password to a file */
+	fp = fopen("password.txt", "w");
 	if (fp == NULL)
 	{
-		perror("popen");
-		exit(EXIT_FAILURE);
+		fprintf(stderr, "Error: Unable to open file for writing.\n");
+		return (1);
 	}
-
-	fgets(output, sizeof(output), fp);
-
-	pclose(fp);
-
-	/* Check if the output matches the expected output */
-	if (strcmp(output, "Tada! Congrats\n") == 0)
-	{
-		printf("Correct output: Compare with solution\n");
-	}
-	else
-	{
-		printf("Wrong password\n");
-	}
-
+	
+	fprintf(fp, "%s\n", password);
+	fclose(fp);
+	
 	return (0);
 }

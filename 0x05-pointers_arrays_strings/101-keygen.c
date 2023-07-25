@@ -1,39 +1,43 @@
+/**
+ * main - Generates a random valid password for the program 101-crackme.
+ *
+ * Return: Always 0 (Success)
+ */
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include <time.h>
 
-#define PASSWORD_LENGTH 11
+#define PASSWORD_LENGTH 13
+
+/**
+ * main - Generates a random valid password for the program 101-crackme.
+ *
+ * Return: Always 0 (Success)
+ */
 
 int main(void)
 {
-	FILE *fp;
-	char password[PASSWORD_LENGTH + 1]; /* +1 for the null terminator */
-	const char charset[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-	int i;
-	
-	srand(time(NULL)); /* Seed the random number generator with the current time */
-       
-	/* Generate random characters for the password */
-	for (i = 0; i < PASSWORD_LENGTH; i++)
+	char password[PASSWORD_LENGTH + 1]; // +1 for the null terminator
+	int i, sum, target;
+
+	srand(time(0));
+
+	sum = 2772; // Sum of ASCII values of the password "Tada! Congrats"
+	target = PASSWORD_LENGTH;
+
+	for (i = 0; i < PASSWORD_LENGTH - 1; i++)
 	{
-		password[i] = charset[rand() % (sizeof(charset) - 1)];
+		// Generate a random ASCII value between 33 and 126
+		int rand_char = rand() % (126 - 33 + 1) + 33;
+
+		password[i] = rand_char;
+		sum -= rand_char;
 	}
-	
-	password[PASSWORD_LENGTH] = '\0'; /* Null-terminate the password string */
-	
+
+	password[PASSWORD_LENGTH - 1] = sum;
+	password[PASSWORD_LENGTH] = '\0';
+
 	printf("%s\n", password);
 
-	/* Save the generated password to a file */
-	fp = fopen("password.txt", "w");
-	if (fp == NULL)
-	{
-		fprintf(stderr, "Error: Unable to open file for writing.\n");
-		return (1);
-	}
-	
-	fprintf(fp, "%s\n", password);
-	fclose(fp);
-	
 	return (0);
 }

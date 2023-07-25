@@ -8,6 +8,7 @@
  *
  * Return: The converted integer.
  */
+
 int _atoi(char *s)
 {
 	int sign = 1;
@@ -19,7 +20,7 @@ int _atoi(char *s)
 		i++;
 
 	/*Check for sign*/
-	if (s[i] == '-' || s[i] == '+')
+	while (s[i] == '-' || s[i] == '+')
 	{
 		sign = (s[i] == '-') ? -1 : 1;
 		i++;
@@ -30,7 +31,7 @@ int _atoi(char *s)
 	{
 		/*Check for integer overflow*/
 		if (result > INT_MAX / 10 ||
-			(result == INT_MAX / 10 && s[i] - '0' > INT_MAX % 10))
+		(result == INT_MAX / 10 && s[i] - '0' > INT_MAX % 10))
 		{
 			return ((sign == 1) ? INT_MAX : INT_MIN);
 		}

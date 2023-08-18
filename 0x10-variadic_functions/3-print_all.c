@@ -3,7 +3,7 @@
 /**
  * print_all - prints arguments of various types
  * @format: list of types of arguments passed to the function
- */
+*/
 void print_all(const char * const format, ...)
 {
 	va_list args;
@@ -31,13 +31,11 @@ void print_all(const char * const format, ...)
 					str = "(nil)";
 				printf("%s", str);
 				break;
-			default:
-				i++;
-				continue;
 		}
 
-		if (format[i + 1] != '\0')
-			printf(",\t");
+		if ((format[i] == 'c' || format[i] == 'i' || format[i] == 'f' || format[i] == 's') &&
+				    format[i + 1] != '\0')
+			printf(",");
 		i++;
 	}
 

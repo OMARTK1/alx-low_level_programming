@@ -2,13 +2,13 @@
 
 /**
  * add_node - it adds a new node at the beginning of a linked list
- * @h: A pointer to a pointer to the head node of the list
+ * @head: A pointer to a pointer to the head node of the list
  * @str: The string to be stored in the new node
  *
  * Return: A pointer to the new node if successful,
  *		NULL if memory allocation fails
  */
-list_t *add_node(list_t **h, const char *str)
+list_t *add_node(list_t **head, const char *str)
 {
 	list_t *new_node;
 

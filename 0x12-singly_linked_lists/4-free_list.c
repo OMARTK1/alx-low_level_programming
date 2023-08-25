@@ -2,19 +2,19 @@
 
 /**
  * free_list - it frees a list_t list
- * @h: A pointer to the head node
+ * @head: A pointer to the head node
  *
  * Return: void
  */
-void free_list(list_t *h)
+void free_list(list_t *head)
 {
 	list_t *i;
 
-	while (h)
+	while (head)
 	{
-		i = h->next;
-		free(h->str);
-		free(h);
-		h = i;
+		i = head->next;
+		free(head->str);
+		free(head);
+		head = i;
 	}
 }

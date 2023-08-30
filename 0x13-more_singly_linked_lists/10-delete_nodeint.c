@@ -8,30 +8,37 @@
  */
 int delete_nodeint_at_index(listint_t **head, unsigned int index)
 {
-	if (*head == NULL)
+	unsigned int i;
+	listint_t *prev_node;
+	listint_t *new_node_post;
+
+	prev_node = *head;
+
+	if (index != 0)
+	{
+		for (i = 0; i < index - 1 && prev_node != NULL; i++)
+		{
+			prev_node = prev_node->next;
+		}
+	}
+
+	if (prev_node == NULL || (prev_node->next == NULL && index != 0))
+	{
 		return (-1);
-
-	if (index == 0)
-	{
-		listint_t *temp = *head;
-
-		*head = (*head)->next;
-		free(temp);
-		return (1);
 	}
 
-	listint_t *prev_indx = *head;
-	listint_t *rmv_at_index = (*head)->next;
+	new_node_post = prev_node->next;
 
-	for (unsigned int i = 1; i < index; i++)
+	if (index != 0)
 	{
-		if (rmv_at_index == NULL)
-			return (-1);
-		prev_indx = rmv_at_index;
-		rmv_at_index = rmv_at_index->next;
+		prev_node->next = new_node_post->next;
+		free(new_node_post);
+	}
+	else
+	{
+		free(prev_node);
+		*head = new_node_post;
 	}
 
-	prev_indx->next = rmv_at_index->next;
-	free(rmv_at_index);
 	return (1);
 }

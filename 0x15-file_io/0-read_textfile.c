@@ -15,24 +15,24 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	ssize_t re, wr;
 
 	if (filename == NULL)
-		return (0);
+		return (-1);
 
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
-		return (0);
+		return (-1);
 
 	re = read(fd, buff, letters);
 	if (re == -1)
 	{
 		close(fd);
-		return (0);
+		return (-1);
 	}
 
 	wr = write(STDOUT_FILENO, buff, re);
 	if (wr == -1 || wr != re)
 	{
 		close(fd);
-		return (0);
+		return (-1);
 	}
 
 	close(fd);

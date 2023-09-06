@@ -1,7 +1,7 @@
 #include "main.h"
 
 #define PERMISSIONS (S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH)
-#define USAGE "Usage: cp cp file_from file_to\n"
+#define USAGE "Usage: cp file_from file_to\n"
 #define ERR_NOREAD "Error: Can't read from file %s\n"
 #define ERR_NOWRITE "Error: Can't write to %s\n"
 #define ERR_NOCLOSE "Error: Can't close fd %d\n"
@@ -11,7 +11,7 @@
  * @argc: its the number of arguments
  * @argv: its an array of arguments
  *
- * Return: 0 on success, 97, 98, 99, or 100 on error
+ * Return: 1 on success, 0 if it's fails
  */
 int main(int argc, char **argv)
 {
@@ -38,12 +38,15 @@ int main(int argc, char **argv)
 
 	src_fd = close(src_fd);
 	dest_fd = close(dest_fd);
-
 	if (src_fd)
 		dprintf(STDERR_FILENO, ERR_NOCLOSE, src_fd), exit(100);
 
 	if (dest_fd)
 		dprintf(STDERR_FILENO, ERR_NOCLOSE, dest_fd), exit(100);
+
+	if (chmod(argv[2], PERMISSIONS) == -1)
+		dprintf(STDERR_FILENO, "Error: Can't set permissions for %s\n",
+				argv[2]), exit(99);
 
 	return (EXIT_SUCCESS);
 }

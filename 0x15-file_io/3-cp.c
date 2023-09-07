@@ -5,6 +5,8 @@
 #define ERR_NOREAD "Error: Can't read from file %s\n"
 #define ERR_NOWRITE "Error: Can't write to file %s\n"
 #define ERR_NOCLOSE "Error: Can't close fd %d\n"
+#define ERR_NOREADDEST "Error: Can't read from destination file %s\n"
+#define ERR_NOWRITEDEST "Error: Can't write to destination file %s\n"
 
 /**
  * handle_error - Prints an error message and exits with an error code.
@@ -69,10 +71,10 @@ void copy_file(int src_fd, int dest_fd)
 	while ((cp = read(src_fd, buff, READ_BUFF_SIZE)) > 0)
 	{
 		if (write(dest_fd, buff, cp) != cp)
-			handle_error(ERR_NOWRITE, "file", 99);
+			handle_error(ERR_NOWRITEDEST, "file", 99);
 	}
 
-	if (cp == -1)
+	if (cp < 0)
 		handle_error(ERR_NOREAD, "file", 98);
 }
 

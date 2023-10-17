@@ -1,8 +1,9 @@
 #include "main.h"
 
 char *_strpbrk(char *s, char *accept) {
+	int i = 0;
 	while (*s) {
-		for (int i = 0; accept[i]; i++) {
+		for (i = 0; accept[i]; i++) {
 			if (*s == accept[i]) {
 				return s;
 			}

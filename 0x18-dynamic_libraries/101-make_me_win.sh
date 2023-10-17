@@ -1,3 +1,3 @@
 #1/bin/bash
-wget -P /tmp 101-make_me_win.sh
+wget -P /tmp https://github.com/OMARTK1/alx-low_level_programming/blob/master/0x18-dynamic_libraries/libgiga.so
 export LD_PRELOAD=/tmp/libgiga.so
